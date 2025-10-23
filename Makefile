@@ -1,10 +1,24 @@
 CXX = clang++
-SOURCE_CXX = src/main.cpp
-TARGET = bloom_filter
-LDFLAGS_COMMON = -std=c++2a
+CXXFLAGS = -std=c++2a -Wall -Wextra -Iinclude
 
-all:
-	$(CXX) $(SOURCE_CXX) $(OBJECTS_CPP) $(LDFLAGS_COMMON) -o $(TARGET)
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
+
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
+OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCES))
+TARGET = $(BIN_DIR)/bloom_filter
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	@mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -rf *.o $(TARGET)
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
