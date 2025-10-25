@@ -3,8 +3,11 @@
 #include "HashFunction.hpp"
 
 class HashFunctionFactory {
+private:
+    int it = 0;
 public:
     HashFunctionFactory() = default;
     template<typename T>
-    std::unique_ptr<HashFunction<T>> createHashFunction(int m) const;
+    std::unique_ptr<HashFunction<T>> createHashFunction(int m);
 };
+
