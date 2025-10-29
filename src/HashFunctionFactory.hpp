@@ -8,7 +8,7 @@ class HashFunctionFactory {
     public:
         HashFunctionFactory() = default;
         template<typename T>
-        std::unique_ptr<HashFunction<T>> createHashFunction(int m) {
+        std::unique_ptr<HashFunction<T>> createHashFunction(size_t m) {
             this->it++;
             return std::make_unique<HashFunction<T>>(m, this->it);
         }
