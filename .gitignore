@@ -1,3 +1,11 @@
 bin/
 obj/
 *.txt
+report/img
+report/Makefile
+*.tex
+*.aux
+*.log
+*.toc*
+.DS_Store
+*.out
