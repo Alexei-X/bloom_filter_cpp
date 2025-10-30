@@ -28,9 +28,13 @@ def make_graph(line):
     n = int(line[separator+1:j])
     k = int(ceil(m/n*log(2)))
     x_values, y_values = extract_points(line)
-    min_th = y_values[k]
+    min_th = y_values[k-1]
+    plt.figure().set_figwidth(10)
     plt.plot(x_values, y_values, 'ro')
-    plt.plot(k, min_th, 'go')
+    plt.xlabel("Number of functions k")
+    plt.ylabel("Number of false positive for 5*n iterations")
+    plt.plot(k, min_th, 'go', label="theoretical optimum")
+    plt.legend()
     plt.title(title)
     plt.show()
 

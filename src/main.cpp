@@ -37,7 +37,7 @@ int count_coll(float m, float n, int k, int it) {
 void iteration_coll(int m, int n, std::ofstream *output_file) {
     *output_file << "(" << m << ";" << n << ")";
     for (int j = 1; j < N_K_TEST; j++) {
-        *output_file << "[" << j << "," << count_coll(m, n, j, 5000) << "]" << ",";
+        *output_file << "[" << j << "," << count_coll(m, n, j) << "]" << ",";
     }
     *output_file << std::endl;
 }
@@ -45,13 +45,11 @@ void iteration_coll(int m, int n, std::ofstream *output_file) {
 void test_coll(std::string path) {
     std::ofstream output_file (path);
     if (output_file.is_open()) {
-        iteration_coll(5000, 1000, &output_file);
         iteration_coll(10000, 1000, &output_file);
+        iteration_coll(5000, 1000, &output_file);
         iteration_coll(15000, 1000, &output_file);
-        iteration_coll(50000, 1000, &output_file);
         iteration_coll(1000, 100, &output_file);
-        iteration_coll(1000, 200, &output_file);
-        iteration_coll(1000, 500, &output_file);
+        iteration_coll(120000, 10000, &output_file);
     } else {
         std::cerr << "Error opening output file";
     }
