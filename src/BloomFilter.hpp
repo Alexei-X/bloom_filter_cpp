@@ -21,11 +21,11 @@ class BloomFilter {
         ~BloomFilter() = default;
 
         bool insert(T element) {
-            if (isInserted(element)) return false;
+            bool already_ins = isInserted(element);
             for (size_t i = 0; i < this->k; i++) {
                 this->bit_vector.at(this->hash_fcts.at(i)->getIndex(element)) = true;
             }
-            return true;
+            return !already_ins;
         }
         
         bool isInserted(T element) {

@@ -9,3 +9,8 @@ report/Makefile
 *.toc*
 .DS_Store
 *.out
+.vscode/
+*.bib
+*.bbl
+*.xml
+*.blg

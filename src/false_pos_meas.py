@@ -23,19 +23,19 @@ def make_graph(line):
     i = line.index("(")
     j = line.index(")")
     separator = line.index(";")
-    title = "Count of false positive for (m, n) = " + line[i:j+1]
+    title = "Count of false positives for (m; n) = " + line[i:j+1]
     m = int(line[i+1:separator])
     n = int(line[separator+1:j])
-    k = int(ceil(m/n*log(2)))
+    k = int(ceil((m/n)*log(2)))
     x_values, y_values = extract_points(line)
     min_th = y_values[k-1]
     plt.figure().set_figwidth(10)
     plt.plot(x_values, y_values, 'ro')
-    plt.xlabel("Number of functions k")
-    plt.ylabel("Number of false positive for 5*n iterations")
+    plt.xlabel("k", fontsize=16)
+    plt.ylabel("Number of false positives", fontsize=16)
     plt.plot(k, min_th, 'go', label="theoretical optimum")
     plt.legend()
-    plt.title(title)
+    plt.title(title, fontsize=20)
     plt.show()
 
 if __name__ == "__main__":
